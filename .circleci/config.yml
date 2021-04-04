@@ -14,7 +14,7 @@ jobs:
           
           - run: |
               TAG=0.1.$CIRCLE_BUILD_NUM
-              docker build -t oshumda/lesson3:$TAG .
+              docker build -t oshumada/lesson3:$TAG .
               docker login -u oshumada -p $DOCKERHUB_PASSWORD
               docker push oshumada/lesson3:$TAG
               
