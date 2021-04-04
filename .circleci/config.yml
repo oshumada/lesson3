@@ -6,15 +6,15 @@ jobs:
         auth:
           username: oshumada
           password: $DOCKERHUB_PASSWORD
-        steps:
-          - checkout
+    steps:
+      - checkout
   
-          - setup_remote_docker:
-              version: 19.03.13
+      - setup_remote_docker:
+          version: 19.03.13
           
-          - run: |
-              TAG=0.1.$CIRCLE_BUILD_NUM
-              docker build -t oshumada/lesson3:$TAG .
-              docker login -u oshumada -p $DOCKERHUB_PASSWORD
-              docker push oshumada/lesson3:$TAG
+      - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
+          docker build -t oshumada/lesson3:$TAG .
+          docker login -u oshumada -p $DOCKERHUB_PASSWORD
+          docker push oshumada/lesson3:$TAG
               
