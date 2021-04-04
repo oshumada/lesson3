@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.15
+        auth:
+          username: oshumada
+          password: $DOCKERHUB_PASSWORD
+        steps:
+          - checkout
+  
+          - setup_remote_docker:
+              version 19.03.13
+          
+          - run:
+              TAG=0.1.$CIRCLE-BUILD_NUM
+              docker build -t oshumda/lesson3:$TAG .
+              docker login -u oshumada -p $DOCKERHUB_PASSWORD
+              docker push oshumada/lesson3:$TAG
+              
